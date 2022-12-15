@@ -1,0 +1,226 @@
+{% extends "template_base.html"%}
+{% block home %}
+{% set actiu1 = 'active' %}
+{% set esactiu1 = 'active show' %}
+{% set setEnrera = setmanaActual-1 %}
+{% set setEnvant = setmanaActual+1 %}
+
+{% with messages = get_flashed_messages(category_filter=["error", "exit"], with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show {{ category }}" role="alert">
+        <strong>Avís! </strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</ul>
+
+{% endif %}
+{% endwith %}
+
+{% if 'reserves' in seccio %}
+{% set actiu1 = '' %}
+{% set esactiu1 = '' %}
+{% set actiu2 = 'active' %}
+{% set esactiu2 = 'active show' %}
+{% endif %}
+
+{% if 'usuaris' in seccio %}
+{% set actiu1 = '' %}
+{% set esactiu1 = '' %}
+{% set actiu3 = 'active' %}
+{% set esactiu3 = 'active show' %}
+{% endif %}
+
+
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link {{ actiu1 }}" id="nova-reserva-tab" data-bs-toggle="tab"
+            data-bs-target="#nova-reserva-tab-pane" type="button" role="tab" aria-controls="nova-reserva-tab-pane"
+            aria-selected="true">Reservar Pista</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link {{ actiu2 }}" id="reserves-tab" data-bs-toggle="tab" data-bs-target="#reserves-tab-pane"
+            type="button" role="tab" aria-controls="reserves-tab-pane" aria-selected="false">Veure Reserves</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link {{ actiu3 }}" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+            type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Usuaris</button>
+    </li>
+
+</ul>
+<div class="tab-content contorno" id="myTabContent">
+    <div class="tab-pane fade {{ esactiu1 }}" id="nova-reserva-tab-pane" role="tabpanel"
+        aria-labelledby="nova-reseva-tab" tabindex="0">
+        <div class="m-5">
+            <div class="container pt-4">
+                <div class="alert alert-primary" role="alert">
+                    <div class="row">
+                        
+                        <div class="col-sm-12">
+                            <h2>Reserva de Pistes </h2>
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+            <form action="/" method="POST" name='reservas'>
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <legend>Reserva de Pista</legend>
+                        <div class="mb-3">
+                            <div><label for="disabledSelect" class="form-label">Dia de la reserva:</label></div>
+                            <input type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
+                                max="2030-12-31">
+                        </div>
+                        <div class="mb-3">
+                            <label for="disabledSelect" class="form-label">Hora de Reserva</label>
+                            <select id="disabledSelect" class="form-select" name="hora">
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="instalacio" value="0" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Instal·lació Coberta
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="instalacio" value="1">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Instal·lació Exterior
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <legend>Dades Personals</legend>
+                        <div class="mb-3">
+                            <label for="disabledSelect" class="form-label">Nom y Llinatges</label>
+                            <select id="disabledSelect" class="form-select" name="nom">
+                                {% for usuari in usuaris %}
+                                <option value="{{ usuari['id_usuari'] }}">{{ usuari['nom'] }} {{ usuari['llinatges'] }}
+                                </option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container bg-light">
+                        <div class="col-md-12 text-center">
+
+                            <button type="submit" class="btn btn-primary">Reservar</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="tab-pane fade {{ esactiu2 }}" id="reserves-tab-pane" role="tabpanel" aria-labelledby="reserves-tab"
+    tabindex="0">
+    <div class="m-5">
+        <div class="container pt-4">
+            <div class="alert alert-primary" role="alert">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a class="btn btn-primary" href="/?setmana={{setEnrera}}&seccio=reserves">Anterior Setmana</a>
+                    </div>
+                    <div class="col-sm-8">
+                        <h2>Setmana {{ setmanaActual }} </h2>
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="btn btn-primary" href="/?setmana={{setEnvant}}&seccio=reserves">Seguent Setmana</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <th></th>
+                        <th>Dilluns</th>
+                        <th>Dimarts</th>
+                        <th>Dimecres</th>
+                        <th>Dijous</th>
+                        <th>Divendres</th>
+                    </thead>
+                    <tbody>
+                        {% for fil in range(0,6) %}
+                        <tr>
+                            <th>{{fil+15}}:00</th>
+                            {% for col in range(0,5) %}
+                            <td>
+                                {% for res in reserves[col][fil] %}
+                                <p>{{ res }}</p>
+                                {% endfor %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane fade {{ esactiu3 }}" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+    tabindex="0">
+
+    <div class="m-5">
+        <div class="container pt-4">
+        <div class="alert alert-primary" role="alert">
+            <div class="row">
+
+                <div class="col-sm-9">
+                    <h2> Usuaris</h2>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-primary" href="nou-usuari"> Nou Usuari</a>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Llinatge</th>
+                    <th scope="col">Telèfon</th>
+                    <th scope="col">Accions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuari in usuaris %}
+                <tr>
+                    <th scope="row">{{ usuari['id_usuari'] }}</th>
+                    <td>{{ usuari['nom'] }}</td>
+                    <td>{{ usuari['llinatges'] }}</td>
+                    <td>{{ usuari['telefon'] }}</td>
+                    <td>
+                        <a href="{{url_for('editUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i class="fa fa-edit"
+                                style="font-size:28px"></i></a>&nbsp;
+                        <a href="{{url_for('deleteUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i class="fa fa-trash-o"
+                                style="font-size:28px"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+</div>
+{% endblock %}

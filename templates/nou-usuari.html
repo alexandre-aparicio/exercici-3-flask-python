@@ -1,0 +1,75 @@
+{% extends "template_base.html"%}
+{% block home %}
+<div class="alert alert-primary" role="alert">
+    <div class="row">
+
+        <div class="col-sm-9">
+         <h2> Usuaris</h2>
+        </div>
+        <div class="col-sm-3">
+           <a class="btn btn-primary" href="/"> Enrere</a>
+        </div>   
+        </div>        
+</div>
+<div class="container">
+    <form action="/nou-usuari" method="POST" name='usuaris'>
+        <div class="row">
+            {% if error is defined %}
+            <div class="alert alert-danger m-5" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+            {% if success is defined %}
+            <div class="alert alert-success m-5" role="alert">
+                {{ success }}
+            </div>
+            {% endif %}
+            <div class="col-sm-2">
+                
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nom" class="form-label">Nom: </label>
+                            <input type="text" class="form-control" name="nom" id="nom">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="llinatges" class="form-label">Llinatges: </label>
+                            <input type="text" class="form-control" name="llinatges" id="llinatges">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="tlefon" class="form-label">Telèfon: </label>
+                            <input type="text" class="form-control" name="telefon" id="telefon">
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+            <div class="col-sm-2">
+                
+            </div>
+            <div class="container bg-light">
+                <div class="col-md-12 text-center">
+                    
+                    <button type="submit" class="btn btn-primary">introduir</button>
+                </div>
+            </div>
+    </form>
+            
+</div>
+
+</div>
+{% endblock %}
+
