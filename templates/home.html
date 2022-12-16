@@ -48,7 +48,6 @@
         <button class="nav-link {{ actiu3 }}" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
             type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Usuaris</button>
     </li>
-
 </ul>
 <div class="tab-content contorno" id="myTabContent">
     <div class="tab-pane fade {{ esactiu1 }}" id="nova-reserva-tab-pane" role="tabpanel"
@@ -57,72 +56,68 @@
             <div class="container pt-4">
                 <div class="alert alert-primary" role="alert">
                     <div class="row">
-                        
                         <div class="col-sm-12">
                             <h2>Reserva de Pistes </h2>
                         </div>
-                        
-
-
-
                     </div>
                 </div>
-            <form action="/" method="POST" name='reservas'>
-                <div class="row">
+                <form action="/" method="POST" name='reservas'>
+                    <div class="row">
 
-                    <div class="col-sm-4">
-                        <legend>Reserva de Pista</legend>
-                        <div class="mb-3">
-                            <div><label for="disabledSelect" class="form-label">Dia de la reserva:</label></div>
-                            <input type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
-                                max="2030-12-31">
+                        <div class="col-sm-4">
+                            <legend>Reserva de Pista</legend>
+                            <div class="mb-3">
+                                <div><label for="disabledSelect" class="form-label">Dia de la reserva:</label></div>
+                                <input type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
+                                    max="2030-12-31">
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledSelect" class="form-label">Hora de Reserva</label>
+                                <select id="disabledSelect" class="form-select" name="hora">
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="instalacio" value="0" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Instal·lació Coberta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="instalacio" value="1">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Instal·lació Exterior
+                                </label>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Hora de Reserva</label>
-                            <select id="disabledSelect" class="form-select" name="hora">
-                                <option value="15:00">15:00</option>
-                                <option value="16:00">16:00</option>
-                                <option value="17:00">17:00</option>
-                                <option value="18:00">18:00</option>
-                                <option value="19:00">19:00</option>
-                                <option value="20:00">20:00</option>
-                            </select>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="instalacio" value="0" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Instal·lació Coberta
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="instalacio" value="1">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Instal·lació Exterior
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <legend>Dades Personals</legend>
-                        <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Nom y Llinatges</label>
-                            <select id="disabledSelect" class="form-select" name="nom">
-                                {% for usuari in usuaris %}
-                                <option value="{{ usuari['id_usuari'] }}">{{ usuari['nom'] }} {{ usuari['llinatges'] }}
-                                </option>
-                                {% endfor %}
+                        <div class="col-sm-7">
+                            <legend>Dades Personals</legend>
+                            <div class="mb-3">
+                                <label for="disabledSelect" class="form-label">Nom y Llinatges</label>
+                                <select id="disabledSelect" class="form-select" name="nom">
+                                    {% for usuari in usuaris %}
+                                    <option value="{{ usuari['id_usuari'] }}">{{ usuari['nom'] }} {{ usuari['llinatges']
+                                        }}
+                                    </option>
+                                    {% endfor %}
 
-                            </select>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container bg-light">
-                        <div class="col-md-12 text-center">
+                        <div class="container bg-light">
+                            <div class="col-md-12 text-center">
 
-                            <button type="submit" class="btn btn-primary">Reservar</button>
+                                <button type="submit" class="btn btn-primary">Reservar</button>
+                            </div>
                         </div>
-                    </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <div class="tab-pane fade {{ esactiu2 }}" id="reserves-tab-pane" role="tabpanel" aria-labelledby="reserves-tab"
@@ -178,48 +173,48 @@
 
     <div class="m-5">
         <div class="container pt-4">
-        <div class="alert alert-primary" role="alert">
-            <div class="row">
+            <div class="alert alert-primary" role="alert">
+                <div class="row">
 
-                <div class="col-sm-9">
-                    <h2> Usuaris</h2>
-                </div>
-                <div class="col-sm-3">
-                    <a class="btn btn-primary" href="nou-usuari"> Nou Usuari</a>
+                    <div class="col-sm-9">
+                        <h2> Usuaris</h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-primary" href="nou-usuari"> Nou Usuari</a>
+                    </div>
                 </div>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Llinatge</th>
+                        <th scope="col">Telèfon</th>
+                        <th scope="col">Accions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuari in usuaris %}
+                    <tr>
+                        <th scope="row">{{ usuari['id_usuari'] }}</th>
+                        <td>{{ usuari['nom'] }}</td>
+                        <td>{{ usuari['llinatges'] }}</td>
+                        <td>{{ usuari['telefon'] }}</td>
+                        <td>
+                            <a href="{{url_for('editUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i class="fa fa-edit"
+                                    style="font-size:28px"></i></a>&nbsp;
+                            <a href="{{url_for('deleteUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i
+                                    class="fa fa-trash-o" style="font-size:28px"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Llinatge</th>
-                    <th scope="col">Telèfon</th>
-                    <th scope="col">Accions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuari in usuaris %}
-                <tr>
-                    <th scope="row">{{ usuari['id_usuari'] }}</th>
-                    <td>{{ usuari['nom'] }}</td>
-                    <td>{{ usuari['llinatges'] }}</td>
-                    <td>{{ usuari['telefon'] }}</td>
-                    <td>
-                        <a href="{{url_for('editUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i class="fa fa-edit"
-                                style="font-size:28px"></i></a>&nbsp;
-                        <a href="{{url_for('deleteUsuari')}}?id_u={{ usuari['id_usuari'] }}"><i class="fa fa-trash-o"
-                                style="font-size:28px"></i></a>
-                    </td>
-                </tr>
-                {% endfor %}
-
-
-            </tbody>
-        </table>
     </div>
-</div>
 </div>
 
 </div>

@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="cat">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>UT3_Reserves</title>
+  <style>
+    .contorno {
+      margin-top: -45px;
+      border-bottom: 1px solid #dee2e6;
+      border-left: 1px solid #dee2e6;
+      border-right: 1px solid #dee2e6;
+    }
 
-    <title>UT3_Reserves</title>
-    <style>
-      .contorno {
-        margin-top: -45px;
-        border-bottom: 1px solid #dee2e6;
-        border-left: 1px solid #dee2e6;
-        border-right: 1px solid #dee2e6;
-      }
-      .error {
-        color: #842029;
-        background-color: #f8d7da;
-        border-color: #f5c2c7;
-      }
-      .exit {
-        color: #0f5132;
-        background-color: #d1e7dd;
-        border-color: #badbcc;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row p-5 bg-primary text-white text-center">
-        <h1>App de Reserva de Pistes (Base de Dades MySql)</h1>
-      </div>
-    </div>
-    <div class="container mt-3 mb-3">
-      <div class="col-md-12 text-center">{% block home %} {% endblock %}</div>
-    </div>
+    .error {
+      color: #842029;
+      background-color: #f8d7da;
+      border-color: #f5c2c7;
+    }
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    .exit {
+      color: #0f5132;
+      background-color: #d1e7dd;
+      border-color: #badbcc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row p-5 bg-primary text-white text-center">
+      <h1>App de Reserva de Pistes (Base de Dades MySql)</h1>
+    </div>
+  </div>
+  <div class="container mt-3 mb-3">
+    <div class="col-md-12 text-center">{% block home %} {% endblock %}</div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
-<script></script>
